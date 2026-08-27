@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..900&family=Caveat:wght@500;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bricolage+Grotesque:opsz,wght@12..96,400..900&family=Caveat:wght@500;700&family=Manrope:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <style>
     :root {
@@ -494,72 +494,64 @@
       text-align: center;
     }
 
-    .hero-kicker {
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
+      gap: 14px;
+      margin-bottom: 10px;
+      max-width: 100%;
+    }
+
+    .eyebrow-text {
+      font-size: clamp(0.85rem, 2vw, 1.08rem);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--navy-deep);
+    }
+
+    .eyebrow-line {
+      width: 38px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--flame), var(--ember));
+      border-radius: 1px;
+      opacity: 0.85;
+      flex-shrink: 0;
     }
 
     .hero-title-wrap {
       position: relative;
+      display: block;
+      margin: 12px auto 18px;
+      width: 100%;
+    }
+
+    .hero h1.hero-title {
+      font-family: 'Bebas Neue', 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(3.6rem, 13.5vw, 10rem);
+      font-weight: 400;
+      line-height: 0.88;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      background: linear-gradient(180deg, #F25A24 0%, #D8432B 55%, #A6281F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0 auto;
       display: inline-block;
-      margin-top: 22px;
-    }
-
-    .script-the {
-      font-family: 'Caveat', cursive;
-      font-size: clamp(2.2rem, 4.6vw, 3.6rem);
-      color: var(--flame);
-      display: block;
-      transform: rotate(-4deg);
-      margin-bottom: -1.4rem;
-      margin-left: -1vw;
-    }
-
-    .hero h1 {
-      font-size: clamp(3.2rem, 12vw, 8.6rem);
-      font-weight: 800;
-      line-height: 0.92;
-      color: var(--navy);
-    }
-
-    .flame-underline {
-      display: block;
-      width: min(560px, 78vw);
-      margin: 6px auto 0;
-      height: 34px;
-    }
-
-    .flame-underline path {
-      fill: none;
-      stroke: url(#flameGrad);
-      stroke-width: 10;
-      stroke-linecap: round;
-      stroke-dasharray: 900;
-      stroke-dashoffset: 900;
-      animation: drawFlame 1.4s cubic-bezier(.3, .8, .3, 1) both;
-      animation-delay: 1s;
-    }
-
-    @keyframes drawFlame {
-      to {
-        stroke-dashoffset: 0;
-      }
+      transform: scale(1, 1.4);
+      transform-origin: center;
     }
 
     .hero-tagline {
-      margin-top: 20px;
+      margin-top: 18px;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       color: var(--ember);
-      font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+      font-size: clamp(0.92rem, 1.6vw, 1.18rem);
       text-transform: uppercase;
-    }
-
-    .hero-sub {
-      max-width: 560px;
-      margin: 20px auto 0;
-      color: var(--ink-soft);
-      font-size: 1.08rem;
-      line-height: 1.65;
     }
 
     .meta-row {
@@ -1214,16 +1206,27 @@
         padding-top: 48px;
       }
 
-      .hero-kicker .kicker-row {
-        font-size: clamp(0.78rem, 3.4vw, 0.95rem);
+      .hero-eyebrow {
+        gap: 8px;
+      }
+
+      .eyebrow-line {
+        width: 20px;
+        height: 1.5px;
+      }
+
+      .eyebrow-text {
+        font-size: clamp(0.68rem, 3.1vw, 0.84rem);
         letter-spacing: 0.08em;
-        flex-wrap: wrap;
-        justify-content: center;
-        text-align: center;
-        gap: 6px 8px;
-        line-height: 1.4;
-        max-width: 100%;
-        padding: 0 10px;
+      }
+
+      .hero-title-wrap {
+        margin: 14px auto 20px;
+      }
+
+      .hero h1.hero-title {
+        font-size: clamp(2.7rem, 12.8vw, 4.8rem);
+        transform: scale(1, 1.45);
       }
 
       .meta-row {
@@ -1350,31 +1353,17 @@
     <div class="ember-field" id="emberField"></div>
 
     <div class="container">
-      <div class="kicker-block center hero-kicker load-seq" style="animation-delay:.1s">
-        <span class="kicker-row">
-          <svg class="icon icon-solid">
-            <use href="#i-flame" />
-          </svg>
-          Children &amp; Teen Workers Conference · <span class="accent">Ibadan</span>
-        </span>
+      <div class="hero-eyebrow load-seq" style="animation-delay:.1s">
+        <span class="eyebrow-line"></span>
+        <span class="eyebrow-text">Children &amp; Teen Workers Conference</span>
+        <span class="eyebrow-line"></span>
       </div>
 
       <div class="hero-title-wrap">
-        <span class="script-the load-seq" style="animation-delay:.25s">The</span>
-        <h1 class="load-seq" style="animation-delay:.4s">Awakening</h1>
-        <svg class="flame-underline" viewBox="0 0 400 34" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="flameGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#F5A93C" />
-              <stop offset="55%" stop-color="#EA6A24" />
-              <stop offset="100%" stop-color="#D8432B" />
-            </linearGradient>
-          </defs>
-          <path d="M8,20 C60,4 110,30 165,14 C220,-2 265,26 320,12 C350,4 375,14 392,10" />
-        </svg>
+        <h1 class="hero-title load-seq" style="animation-delay:.3s">The Awakening</h1>
       </div>
 
-      <p class="hero-tagline load-seq" style="animation-delay:.55s">Dressed for the Fight</p>
+      <p class="hero-tagline load-seq" style="animation-delay:.5s">Dressed for the Fight</p>
 
       <div class="meta-row load-seq" style="animation-delay:.7s">
         <span class="meta-item"><svg class="icon icon-line">
@@ -1469,22 +1458,6 @@
           <span class="kicker-line"></span>
         </div>
         <h2>Choose your pass</h2>
-        <p>Late registration is open — lock in your spot before the doors open on the 25th.</p>
-      </div>
-
-      <div class="includes-row reveal">
-        <span class="inc-item"><span class="check"><svg class="icon icon-line">
-              <use href="#i-check" />
-            </svg></span>Modern strategies for your ministry</span>
-        <span class="inc-item"><span class="check"><svg class="icon icon-line">
-              <use href="#i-check" />
-            </svg></span>Activations and impartations</span>
-        <span class="inc-item"><span class="check"><svg class="icon icon-line">
-              <use href="#i-check" />
-            </svg></span>Refreshing and networking</span>
-        <span class="inc-item"><span class="check"><svg class="icon icon-line">
-              <use href="#i-check" />
-            </svg></span>Snacks and lunch</span>
       </div>
 
       <div class="pricing-grid">
