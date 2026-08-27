@@ -795,52 +795,114 @@
       box-shadow: 0 8px 16px -8px rgba(234, 106, 36, 0.7);
     }
 
-    /* ---------- PARTNER ---------- */
-    .partner-section {
-      padding: 88px 0;
+    /* ---------- COLLABORATION SECTION ---------- */
+    .collab-section {
+      padding: 56px 0;
+      background: linear-gradient(180deg, rgba(251, 240, 225, 0.35) 0%, rgba(255, 249, 240, 0.75) 50%, rgba(251, 240, 225, 0.35) 100%);
+      border-top: 1px solid rgba(30, 58, 92, 0.08);
+      position: relative;
     }
 
-    .partner-card {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: clamp(28px, 4vw, 48px);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .partner-mark {
-      flex-shrink: 0;
-      width: 120px;
-      height: 120px;
-      border-radius: 22px;
-      background: #fff;
+    .collab-inner {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px;
-      box-shadow: 0 14px 30px -16px rgba(30, 58, 92, 0.35);
+      gap: 24px;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 16px;
     }
 
-    .partner-mark img {
-      width: 100%;
-      height: 100%;
+    .collab-rule {
+      flex: 1;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--line), transparent);
+    }
+
+    .collab-card {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 8px 24px 8px 12px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(8px);
+      z-index: 1;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(.16, 1, .3, 1), box-shadow 0.3s ease;
+      box-shadow: 0 8px 22px -10px rgba(30, 58, 92, 0.12);
+    }
+
+    .collab-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -12px rgba(234, 106, 36, 0.25);
+    }
+
+    /* Animated moving gradient border with transparent background */
+    .collab-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      padding: 1.5px;
+      background: linear-gradient(135deg, #EA6A24, #F5A93C, #8C248A, #D8432B, #EA6A24);
+      background-size: 300% 300%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: movingCollabBorder 5s ease infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @keyframes movingCollabBorder {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .collab-visible-logo {
+      width: 80px;
+      height: 80px;
       object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(30, 58, 92, 0.1));
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
     }
 
-    .partner-text h3 {
-      font-size: 1.5rem;
-      margin-top: 4px;
+    .collab-card:hover .collab-visible-logo {
+      transform: scale(1.03);
     }
 
-    .partner-text p {
-      margin-top: 10px;
-      color: var(--ink-soft);
+    .collab-text-group {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      gap: 3px;
+    }
+
+    .collab-kicker {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ember);
+    }
+
+    .collab-name {
       font-size: 0.98rem;
-      line-height: 1.65;
-      max-width: 560px;
+      font-weight: 800;
+      color: var(--navy-deep);
+      line-height: 1.2;
     }
 
     /* ---------- PRICING ---------- */
@@ -963,19 +1025,43 @@
       color: var(--ember);
     }
 
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
     .price-amount {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 800;
       font-size: clamp(2.4rem, 4vw, 3rem);
-      margin-top: 10px;
+      line-height: 1;
       color: inherit;
+      margin: 0;
     }
 
     .price-amount sup {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 700;
       margin-right: 2px;
-      top: -1em;
+      top: -0.65em;
+    }
+
+    .was-price {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+      opacity: 0.55;
+      text-decoration: line-through;
+      text-decoration-thickness: 2px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .price-card.accent .was-price {
+      color: rgba(244, 233, 218, 0.6);
     }
 
     .price-note {
@@ -1253,8 +1339,35 @@
         font-size: 1.25rem;
       }
 
-      .partner-card {
-        padding: 28px 22px;
+      .collab-section {
+        padding: 38px 0;
+      }
+
+      .collab-inner {
+        gap: 10px;
+      }
+
+      .collab-rule {
+        display: none;
+      }
+
+      .collab-card {
+        flex-direction: row;
+        text-align: left;
+        padding: 8px 16px 8px 10px;
+        gap: 10px;
+        width: auto;
+        box-sizing: border-box;
+      }
+
+      .collab-text-group {
+        text-align: left;
+        align-items: flex-start;
+      }
+
+      .collab-visible-logo {
+        width: 68px;
+        height: 68px;
       }
     }
 
@@ -1446,6 +1559,23 @@
     </div>
   </section>
 
+  <!-- COLLABORATION SECTION -->
+  <section class="collab-section" id="collaboration" aria-label="Collaboration">
+    <div class="container">
+      <div class="collab-inner reveal">
+        <span class="collab-rule" aria-hidden="true"></span>
+        <div class="collab-card">
+          <img src="images/partner-catalyst.png" alt="Catalyst Children Network Int'l" class="collab-visible-logo" width="80" height="80">
+          <div class="collab-text-group">
+            <span class="collab-kicker">In collaboration with</span>
+            <span class="collab-name">Catalyst Children Network Int'l</span>
+          </div>
+        </div>
+        <span class="collab-rule" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
 
 
   <section class="pricing-section" id="pricing">
@@ -1462,9 +1592,12 @@
 
       <div class="pricing-grid">
         <div class="price-card reveal">
-          <span class="ribbon">Late Reg <strong class="ribbon-price">₦25k</strong></span>
+          <span class="ribbon">Early Bird</span>
           <span class="price-label">Standard Pass</span>
-          <div class="price-amount"><sup>₦</sup>20,000</div>
+          <div class="price-row">
+            <div class="price-amount"><sup>₦</sup>20,000</div>
+            <span class="was-price">₦25,000</span>
+          </div>
           <p class="price-note">Early bird · per person</p>
           <ul>
             <li><span class="check"><svg class="icon icon-line">
@@ -1486,7 +1619,10 @@
 
         <div class="price-card accent reveal">
           <span class="price-label">Group Registration · Group of 10</span>
-          <div class="price-amount"><sup>₦</sup>180,000</div>
+          <div class="price-row">
+            <div class="price-amount"><sup>₦</sup>180,000</div>
+            <span class="was-price">₦200,000</span>
+          </div>
           <p class="price-note">Per 10 persons · perfect for teams and churches</p>
           <ul>
             <li><span class="check"><svg class="icon icon-line">
@@ -1540,7 +1676,7 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 Kids on Fire · The Awakening — Dressed for the Fight</span>
-        <span>Davidic Generation Church, Ibadan</span>
+        <span>In collaboration with Catalyst Children Network Int'l</span>
       </div>
     </div>
   </footer>
