@@ -151,17 +151,17 @@
     .kicker-row {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      font-size: 0.78rem;
+      gap: 10px;
+      font-size: clamp(0.92rem, 1.8vw, 1.12rem);
       font-weight: 800;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--navy);
     }
 
     .kicker-row .icon {
-      width: 15px;
-      height: 15px;
+      width: 18px;
+      height: 18px;
       color: var(--flame);
     }
 
@@ -247,7 +247,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 74px;
+      height: 84px;
       gap: 16px;
     }
 
@@ -260,11 +260,11 @@
     }
 
     .brand-logo-img {
-      height: 48px;
+      height: 60px;
       width: auto;
       display: block;
       object-fit: contain;
-      filter: drop-shadow(0 4px 10px rgba(30, 58, 92, 0.2));
+      filter: drop-shadow(0 6px 14px rgba(30, 58, 92, 0.22));
       transition: transform .25s ease;
     }
 
@@ -273,11 +273,11 @@
     }
 
     .footer-logo-img {
-      height: 64px;
+      height: 80px;
       width: auto;
       display: block;
       object-fit: contain;
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
       flex-shrink: 0;
     }
 
@@ -567,17 +567,17 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      margin-top: 34px;
+      margin-top: 32px;
       color: var(--navy);
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: clamp(0.95rem, 1.4vw, 1.1rem);
     }
 
     .meta-item {
       display: flex;
       align-items: center;
-      gap: 9px;
-      padding: 6px 20px;
+      gap: 10px;
+      padding: 6px 24px;
     }
 
     .meta-item:not(:first-child) {
@@ -585,8 +585,8 @@
     }
 
     .meta-item .icon {
-      width: 17px;
-      height: 17px;
+      width: 20px;
+      height: 20px;
       color: var(--flame);
     }
 
@@ -1215,15 +1215,15 @@
       }
 
       .hero-kicker .kicker-row {
-        font-size: clamp(0.68rem, 3.2vw, 0.78rem);
+        font-size: clamp(0.78rem, 3.4vw, 0.95rem);
         letter-spacing: 0.08em;
         flex-wrap: wrap;
         justify-content: center;
         text-align: center;
-        gap: 4px 8px;
+        gap: 6px 8px;
         line-height: 1.4;
         max-width: 100%;
-        padding: 0 8px;
+        padding: 0 10px;
       }
 
       .meta-row {
@@ -1256,8 +1256,12 @@
     }
 
     @media (max-width: 560px) {
+      .site-nav .container {
+        height: 74px;
+      }
+
       .brand-logo-img {
-        height: 42px;
+        height: 50px;
       }
 
       .speakers-grid {
@@ -1275,7 +1279,7 @@
 
     @media (max-width: 380px) {
       .brand-logo-img {
-        height: 36px;
+        height: 44px;
       }
     }
 
@@ -1326,9 +1330,7 @@
         <img src="images/logo-brand.png" alt="Kids on Fire logo" class="brand-logo-img" width="174" height="233">
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#theme">The Theme</a></li>
         <li><a href="#speakers">Ministering</a></li>
-        <li><a href="#partners">Partners</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li class="nav-cta-mobile"><a href="#pricing" class="btn btn-primary btn-block">Register Now</a></li>
       </ul>
@@ -1373,23 +1375,17 @@
       </div>
 
       <p class="hero-tagline load-seq" style="animation-delay:.55s">Dressed for the Fight</p>
-      <p class="hero-sub load-seq" style="animation-delay:.68s">Two days for children &amp; teen workers to sharpen how
-        you teach, lead and fight for the next generation — with impartation from four ministers who've given their
-        lives to it.</p>
 
-      <div class="meta-row load-seq" style="animation-delay:.8s">
+      <div class="meta-row load-seq" style="animation-delay:.7s">
         <span class="meta-item"><svg class="icon icon-line">
             <use href="#i-calendar" />
           </svg>25–26 September 2026</span>
         <span class="meta-item"><svg class="icon icon-line">
             <use href="#i-pin" />
           </svg>Davidic Generation Church, Ibadan</span>
-        <span class="meta-item"><svg class="icon icon-line">
-            <use href="#i-handshake" />
-          </svg>With Catalyst Children Network Int'l</span>
       </div>
 
-      <div class="hero-actions load-seq" style="animation-delay:.92s">
+      <div class="hero-actions load-seq" style="animation-delay:.85s">
         <a href="#pricing" class="btn btn-primary">Reserve Your Seat</a>
         <a href="#speakers" class="btn btn-outline">Meet the Ministers</a>
       </div>
@@ -1404,31 +1400,7 @@
     </div>
   </header>
 
-  <section class="theme-section" id="theme">
-    <div class="container theme-grid">
-      <div class="theme-visual reveal">
-        <span class="verse-mark">Ephesians 6</span>
-        <p>"Put on the whole armor of God, that ye may be able to stand against the wiles of the devil."</p>
-        <footer>The theme behind the awakening</footer>
-      </div>
-      <div class="theme-copy reveal">
-        <div class="kicker-block">
-          <span class="kicker-row"><svg class="icon icon-solid">
-              <use href="#i-flame" />
-            </svg>The Theme</span>
-          <span class="kicker-line"></span>
-        </div>
-        <h2>Why "Dressed for the Fight"</h2>
-        <p>Every children's and teen worker carries a battle they didn't sign up for — for attention, for identity, for
-          the heart of the next generation. The Awakening is a call to suit up: sharper teaching, a stronger prayer
-          life, and a renewed fire for the classroom, the youth room and the altar.</p>
-        <p>Across two days in Ibadan, four ministers who have spent years in children and teen ministry will hand you
-          what they carry — not just information, but impartation.</p>
-        <p class="who-for">Sunday school teachers<span class="sep">·</span>Children's pastors<span
-            class="sep">·</span>Teen church leaders<span class="sep">·</span>Youth volunteers</p>
-      </div>
-    </div>
-  </section>
+
 
   <section class="speakers-section" id="speakers">
     <div class="container">
@@ -1485,22 +1457,7 @@
     </div>
   </section>
 
-  <section class="partner-section" id="partners">
-    <div class="container">
-      <div class="partner-card reveal">
-        <div class="partner-mark"><img src="images/partner-catalyst.png" alt="Catalyst Children Network Int'l logo"
-            width="320" height="320" loading="lazy"></div>
-        <div class="partner-text">
-          <span class="kicker-row"><svg class="icon icon-solid">
-              <use href="#i-flame" />
-            </svg>In Partnership With</span>
-          <h3>Catalyst Children Network Int'l</h3>
-          <p>The Awakening is convened by Kids on Fire together with Catalyst Children Network Int'l — joining hands to
-            raise leaders who raise the next generation.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <section class="pricing-section" id="pricing">
     <div class="container">
@@ -1532,10 +1489,10 @@
 
       <div class="pricing-grid">
         <div class="price-card reveal">
-          <span class="ribbon">Late Reg <strong class="ribbon-price">₦30k</strong></span>
+          <span class="ribbon">Late Reg <strong class="ribbon-price">₦25k</strong></span>
           <span class="price-label">Standard Pass</span>
-          <div class="price-amount"><sup>₦</sup>25,000</div>
-          <p class="price-note">Per person</p>
+          <div class="price-amount"><sup>₦</sup>20,000</div>
+          <p class="price-note">Early bird · per person</p>
           <ul>
             <li><span class="check"><svg class="icon icon-line">
                   <use href="#i-check" />
@@ -1555,19 +1512,22 @@
         </div>
 
         <div class="price-card accent reveal">
-          <span class="price-label">Group Registration · From 6</span>
-          <div class="price-amount"><sup>₦</sup>125,000</div>
-          <p class="price-note">Per 6 persons · perfect for teams and churches</p>
+          <span class="price-label">Group Registration · Group of 10</span>
+          <div class="price-amount"><sup>₦</sup>180,000</div>
+          <p class="price-note">Per 10 persons · perfect for teams and churches</p>
           <ul>
             <li><span class="check"><svg class="icon icon-line">
                   <use href="#i-check" />
-                </svg></span>Admission for 6 attendees</li>
+                </svg></span>Admission for 10 attendees</li>
             <li><span class="check"><svg class="icon icon-line">
                   <use href="#i-check" />
                 </svg></span>Modern strategies to elevate your ministry</li>
             <li><span class="check"><svg class="icon icon-line">
                   <use href="#i-check" />
                 </svg></span>Activations and impartations</li>
+            <li><span class="check"><svg class="icon icon-line">
+                  <use href="#i-check" />
+                </svg></span>Refreshing and networking</li>
             <li><span class="check"><svg class="icon icon-line">
                   <use href="#i-check" />
                 </svg></span>Snacks and lunch</li>
@@ -1594,7 +1554,6 @@
         <div class="footer-links">
           <div class="footer-col">
             <h5>Conference</h5>
-            <a href="#theme">The Theme</a>
             <a href="#speakers">Ministering</a>
             <a href="#pricing">Pricing</a>
           </div>
@@ -1608,7 +1567,7 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 Kids on Fire · The Awakening — Dressed for the Fight</span>
-        <span>In partnership with Catalyst Children Network Int'l</span>
+        <span>Davidic Generation Church, Ibadan</span>
       </div>
     </div>
   </footer>
