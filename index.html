@@ -795,114 +795,117 @@
       box-shadow: 0 8px 16px -8px rgba(234, 106, 36, 0.7);
     }
 
-    /* ---------- COLLABORATION SECTION ---------- */
+    /* ---------- COLLABORATION SECTION (SINGLE-LINE CONTINUOUS TICKER) ---------- */
     .collab-section {
-      padding: 56px 0;
-      background: linear-gradient(180deg, rgba(251, 240, 225, 0.35) 0%, rgba(255, 249, 240, 0.75) 50%, rgba(251, 240, 225, 0.35) 100%);
+      padding: 22px 0;
+      background: linear-gradient(180deg, rgba(251, 240, 225, 0.3) 0%, rgba(255, 249, 240, 0.75) 50%, rgba(251, 240, 225, 0.3) 100%);
       border-top: 1px solid rgba(30, 58, 92, 0.08);
+      border-bottom: 1px solid rgba(30, 58, 92, 0.08);
       position: relative;
+      overflow: hidden;
     }
 
-    .collab-inner {
+    .collab-marquee-wrapper {
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, transparent 100%);
+    }
+
+    .collab-track {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 24px;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 16px;
+      width: max-content;
+      animation: collabMarquee 32s linear infinite;
+      will-change: transform;
     }
 
-    .collab-rule {
-      flex: 1;
-      height: 1.5px;
-      background: linear-gradient(90deg, transparent, var(--line), transparent);
+    .collab-track:hover {
+      animation-play-state: paused;
     }
 
-    .collab-card {
-      position: relative;
+    .collab-group {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      padding-right: 32px;
+      flex-shrink: 0;
+    }
+
+    @keyframes collabMarquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .collab-item {
       display: inline-flex;
       align-items: center;
       gap: 14px;
-      padding: 8px 24px 8px 12px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.55);
-      backdrop-filter: blur(8px);
-      z-index: 1;
-      overflow: hidden;
-      transition: transform 0.3s cubic-bezier(.16, 1, .3, 1), box-shadow 0.3s ease;
-      box-shadow: 0 8px 22px -10px rgba(30, 58, 92, 0.12);
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
     }
 
-    .collab-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px -12px rgba(234, 106, 36, 0.25);
-    }
-
-    /* Animated moving gradient border with transparent background */
-    .collab-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 18px;
-      padding: 1.5px;
-      background: linear-gradient(135deg, #EA6A24, #F5A93C, #8C248A, #D8432B, #EA6A24);
-      background-size: 300% 300%;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      animation: movingCollabBorder 5s ease infinite;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    @keyframes movingCollabBorder {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+    .collab-item:hover {
+      transform: translateY(-1px);
     }
 
     .collab-visible-logo {
-      width: 80px;
-      height: 80px;
+      width: 46px;
+      height: 46px;
       object-fit: contain;
-      filter: drop-shadow(0 2px 8px rgba(30, 58, 92, 0.1));
+      filter: drop-shadow(0 2px 5px rgba(30, 58, 92, 0.12));
       flex-shrink: 0;
-      transition: transform 0.3s ease;
+      transition: transform 0.25s ease;
     }
 
-    .collab-card:hover .collab-visible-logo {
-      transform: scale(1.03);
+    .collab-item:hover .collab-visible-logo {
+      transform: scale(1.06);
     }
 
     .collab-text-group {
-      position: relative;
-      z-index: 1;
       display: flex;
-      flex-direction: column;
-      text-align: left;
-      gap: 3px;
+      align-items: baseline;
+      gap: 9px;
+      white-space: nowrap;
     }
 
     .collab-kicker {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--ember);
+      opacity: 0.9;
     }
 
     .collab-name {
-      font-size: 0.98rem;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.02rem;
       font-weight: 800;
       color: var(--navy-deep);
-      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .collab-partition {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      color: var(--flame);
+      opacity: 0.45;
+      flex-shrink: 0;
+    }
+
+    .collab-partition svg {
+      width: 12px;
+      height: 12px;
     }
 
     /* ---------- PRICING ---------- */
@@ -1340,34 +1343,29 @@
       }
 
       .collab-section {
-        padding: 38px 0;
+        padding: 16px 0;
       }
 
-      .collab-inner {
+      .collab-group {
+        gap: 20px;
+        padding-right: 20px;
+      }
+
+      .collab-item {
         gap: 10px;
-      }
-
-      .collab-rule {
-        display: none;
-      }
-
-      .collab-card {
-        flex-direction: row;
-        text-align: left;
-        padding: 8px 16px 8px 10px;
-        gap: 10px;
-        width: auto;
-        box-sizing: border-box;
-      }
-
-      .collab-text-group {
-        text-align: left;
-        align-items: flex-start;
       }
 
       .collab-visible-logo {
-        width: 68px;
-        height: 68px;
+        width: 38px;
+        height: 38px;
+      }
+
+      .collab-text-group {
+        gap: 6px;
+      }
+
+      .collab-name {
+        font-size: 0.92rem;
       }
     }
 
@@ -1559,19 +1557,87 @@
     </div>
   </section>
 
-  <!-- COLLABORATION SECTION -->
-  <section class="collab-section" id="collaboration" aria-label="Collaboration">
-    <div class="container">
-      <div class="collab-inner reveal">
-        <span class="collab-rule" aria-hidden="true"></span>
-        <div class="collab-card">
-          <img src="images/partner-catalyst.png" alt="Catalyst Children Network Int'l" class="collab-visible-logo" width="80" height="80">
-          <div class="collab-text-group">
-            <span class="collab-kicker">In collaboration with</span>
-            <span class="collab-name">Catalyst Children Network Int'l</span>
+  <!-- COLLABORATION SECTION (CONTINUOUS HORIZONTAL TICKER) -->
+  <section class="collab-section" id="collaboration" aria-label="Partnership and Collaboration">
+    <div class="collab-marquee-wrapper reveal">
+      <div class="collab-track">
+        <!-- Group 1 -->
+        <div class="collab-group">
+          <div class="collab-item">
+            <img src="images/partner-catalyst.png" alt="Catalyst Children Network Int'l" class="collab-visible-logo" width="46" height="46">
+            <div class="collab-text-group">
+              <span class="collab-kicker">In collaboration with</span>
+              <span class="collab-name">Catalyst Children Network Int'l</span>
+            </div>
           </div>
+          <span class="collab-partition" aria-hidden="true"><svg class="icon icon-solid"><use href="#i-flame"/></svg></span>
+
+          <div class="collab-item">
+            <img src="images/partner-catalyst.png" alt="Catalyst Children Network Int'l" class="collab-visible-logo" width="46" height="46">
+            <div class="collab-text-group">
+              <span class="collab-kicker">In collaboration with</span>
+              <span class="collab-name">Catalyst Children Network Int'l</span>
+            </div>
+          </div>
+          <span class="collab-partition" aria-hidden="true"><svg class="icon icon-solid"><use href="#i-flame"/></svg></span>
+
+          <div class="collab-item">
+            <img src="images/partner-catalyst.png" alt="Catalyst Children Network Int'l" class="collab-visible-logo" width="46" height="46">
+            <div class="collab-text-group">
+              <span class="collab-kicker">In collaboration with</span>
+              <span class="collab-name">Catalyst Children Network Int'l</span>
+            </div>
+          </div>
+          <span class="collab-partition" aria-hidden="true"><svg class="icon icon-solid"><use href="#i-flame"/></svg></span>
+
+          <div class="collab-item">
+            <img src="images/partner-catalyst.png" alt="Catalyst Children Network Int'l" class="collab-visible-logo" width="46" height="46">
+            <div class="collab-text-group">
+              <span class="collab-kicker">In collaboration with</span>
+              <span class="collab-name">Catalyst Children Network Int'l</span>
+            </div>
+          </div>
+          <span class="collab-partition" aria-hidden="true"><svg class="icon icon-solid"><use href="#i-flame"/></svg></span>
         </div>
-        <span class="collab-rule" aria-hidden="true"></span>
+
+        <!-- Group 2 (Duplicate for infinite seamless loop) -->
+        <div class="collab-group" aria-hidden="true">
+          <div class="collab-item">
+            <img src="images/partner-catalyst.png" alt="Catalyst Children Network Int'l" class="collab-visible-logo" width="46" height="46">
+            <div class="collab-text-group">
+              <span class="collab-kicker">In collaboration with</span>
+              <span class="collab-name">Catalyst Children Network Int'l</span>
+            </div>
+          </div>
+          <span class="collab-partition" aria-hidden="true"><svg class="icon icon-solid"><use href="#i-flame"/></svg></span>
+
+          <div class="collab-item">
+            <img src="images/partner-catalyst.png" alt="Catalyst Children Network Int'l" class="collab-visible-logo" width="46" height="46">
+            <div class="collab-text-group">
+              <span class="collab-kicker">In collaboration with</span>
+              <span class="collab-name">Catalyst Children Network Int'l</span>
+            </div>
+          </div>
+          <span class="collab-partition" aria-hidden="true"><svg class="icon icon-solid"><use href="#i-flame"/></svg></span>
+
+          <div class="collab-item">
+            <img src="images/partner-catalyst.png" alt="Catalyst Children Network Int'l" class="collab-visible-logo" width="46" height="46">
+            <div class="collab-text-group">
+              <span class="collab-kicker">In collaboration with</span>
+              <span class="collab-name">Catalyst Children Network Int'l</span>
+            </div>
+          </div>
+          <span class="collab-partition" aria-hidden="true"><svg class="icon icon-solid"><use href="#i-flame"/></svg></span>
+
+          <div class="collab-item">
+            <img src="images/partner-catalyst.png" alt="Catalyst Children Network Int'l" class="collab-visible-logo" width="46" height="46">
+            <div class="collab-text-group">
+              <span class="collab-kicker">In collaboration with</span>
+              <span class="collab-name">Catalyst Children Network Int'l</span>
+            </div>
+          </div>
+          <span class="collab-partition" aria-hidden="true"><svg class="icon icon-solid"><use href="#i-flame"/></svg></span>
+        </div>
       </div>
     </div>
   </section>
