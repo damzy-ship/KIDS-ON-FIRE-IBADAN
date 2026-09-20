@@ -624,6 +624,126 @@
       margin-top: 2px;
     }
 
+    .eb-strip {
+      display: block;
+      overflow: hidden;
+      background: #f7a21b;
+      color: #1a1a2e;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 9px 0;
+    }
+
+    .eb-strip-track {
+      display: flex;
+      width: max-content;
+      animation: ebMarquee 28s linear infinite;
+    }
+
+    .eb-strip:hover .eb-strip-track {
+      animation-play-state: paused;
+    }
+
+    .eb-strip-group {
+      display: flex;
+      flex-shrink: 0;
+    }
+
+    .eb-strip-group span {
+      padding: 0 28px;
+      white-space: nowrap;
+    }
+
+    .eb-strip b {
+      font-variant-numeric: tabular-nums;
+    }
+
+    @keyframes ebMarquee {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .eb-strip-track {
+        animation: none;
+      }
+    }
+
+    .eb-ended .eb-strip,
+    .eb-ended .eb-hero,
+    .eb-ended .eb-timer {
+      display: none;
+    }
+
+    .eb-hero {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px 14px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: var(--navy-deep);
+      color: #fdf3e7;
+      text-decoration: none;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .eb-hero-tag {
+      background: #f7a21b;
+      color: #1a1a2e;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .eb-hero-text {
+      font-size: 0.8rem;
+      opacity: 0.85;
+    }
+
+    .eb-hero-clock {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .eb-timer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      background: var(--navy-deep);
+      color: #fdf3e7;
+      border-radius: 12px;
+      padding: 10px 14px;
+      margin: 14px 0 6px;
+    }
+
+    .eb-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    .eb-clock {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
     /* ---------- THEME ---------- */
     .theme-section {
       padding: 96px 0;
@@ -1438,6 +1558,23 @@
     </symbol>
   </svg>
 
+  <a href="#pricing" class="eb-strip" role="timer" aria-label="Time left on the early bird price">
+    <div class="eb-strip-track">
+      <div class="eb-strip-group">
+        <span>🔥 Early Bird ends in <b data-eb-str>00h 00m 00s</b></span>
+        <span>Early Bird ticket ₦20,000 <s>₦25,000</s></span>
+        <span>Ends tonight 11:59pm</span>
+        <span>Register now</span>
+      </div>
+      <div class="eb-strip-group" aria-hidden="true">
+        <span>🔥 Early Bird ends in <b data-eb-str>00h 00m 00s</b></span>
+        <span>Early Bird ticket ₦20,000 <s>₦25,000</s></span>
+        <span>Ends tonight 11:59pm</span>
+        <span>Register now</span>
+      </div>
+    </div>
+  </a>
+
   <nav class="site-nav">
     <div class="container">
       <a href="#top" class="brand" aria-label="Kids on Fire Home">
@@ -1491,12 +1628,19 @@
       </div>
 
       <div class="countdown load-seq" id="countdown" aria-label="Countdown to the conference"
-        style="animation-delay:1.05s">
+        style="animation-delay:1.05s;display:none">
         <div class="cell"><strong id="cd-days">00</strong><span>Days</span></div>
         <div class="cell"><strong id="cd-hours">00</strong><span>Hours</span></div>
         <div class="cell"><strong id="cd-min">00</strong><span>Mins</span></div>
         <div class="cell"><strong id="cd-sec">00</strong><span>Secs</span></div>
       </div>
+
+      <a href="#pricing" class="eb-hero load-seq" role="timer" style="animation-delay:1.2s"
+        aria-label="Time left on the early bird price">
+        <span class="eb-hero-tag">Early Bird · ₦20,000</span>
+        <span class="eb-hero-text">Early bird ends in</span>
+        <span class="eb-hero-clock"><b data-eb="h">00</b>:<b data-eb="m">00</b>:<b data-eb="s">00</b></span>
+      </a>
     </div>
   </header>
 
@@ -1665,6 +1809,10 @@
             <span class="was-price">₦25,000</span>
           </div>
           <p class="price-note">Early bird · per person</p>
+          <div class="eb-timer" role="timer" aria-label="Time left on the early bird price">
+            <span class="eb-label">Early bird price ends in</span>
+            <span class="eb-clock"><b data-eb="h">00</b>:<b data-eb="m">00</b>:<b data-eb="s">00</b></span>
+          </div>
           <ul>
             <li><span class="check"><svg class="icon icon-line">
                   <use href="#i-check" />
@@ -1820,6 +1968,28 @@
     }
     tick();
     setInterval(tick, 1000);
+
+    // Early-bird countdown: resets every 12:00am to target 11:59:59pm of the current day
+    const ebEls = { h: [], m: [], s: [] };
+    document.querySelectorAll('[data-eb]').forEach(el => ebEls[el.dataset.eb].push(el));
+    const ebStr = document.querySelectorAll('[data-eb-str]');
+    const ebSet = (k, v) => ebEls[k].forEach(el => { el.textContent = v; });
+    function ebTick() {
+      const now = new Date();
+      let ebEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59).getTime();
+      let left = Math.floor((ebEnd - now.getTime()) / 1000);
+      if (left < 0) {
+        const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 23, 59, 59);
+        left = Math.floor((tomorrow.getTime() - now.getTime()) / 1000);
+      }
+      const h = pad(Math.floor(left / 3600));
+      const m = pad(Math.floor((left % 3600) / 60));
+      const s = pad(left % 60);
+      ebSet('h', h); ebSet('m', m); ebSet('s', s);
+      ebStr.forEach(el => { el.textContent = `${h}h ${m}m ${s}s`; });
+    }
+    ebTick();
+    setInterval(ebTick, 1000);
   </script>
 
 </body>
